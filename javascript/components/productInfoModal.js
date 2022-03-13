@@ -10,6 +10,13 @@ export default {
 
   template: "#userProductModal",
 
+  // 使用 watch 將 productM 的值傳給 product
+  watch: {
+    productM(value) {
+      this.product = value;
+    },
+  },
+
   data() {
     return {
       apiUrl: "https://vue3-course-api.hexschool.io/v2",

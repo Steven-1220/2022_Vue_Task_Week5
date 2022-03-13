@@ -170,7 +170,13 @@ const app = Vue.createApp({
     //送出訂單
     sendOrder() {
       const order = this.form;
-      console.log(order);
+      // console.log(order);
+      // 若沒有輸入內容就點擊送出，就觸發表單驗證
+      this.$refs.form.validate().then((valid) => {
+        if (!valid) {
+          return;
+        }
+      });
       axios
         .post(`${apiUrl}/api/${apiPath}/order`, { data: order })
         .then((res) => {
